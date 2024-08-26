@@ -32,7 +32,21 @@ namespace Assignment_Entity_1
             modelBuilder.Entity<Course_Inst>()
                 .HasKey(ci => new { ci.Inst_ID, ci.Course_ID });
 
-            
+            modelBuilder.Entity<Stud_Course>()
+            .HasKey(sc => new { sc.Stud_ID, sc.Course_ID });
+
+            modelBuilder.Entity<Course_Inst>()
+                .HasKey(ci => new { ci.Inst_ID, ci.Course_ID });
+
+            modelBuilder.Entity<Student>()
+                .HasOne(s => s.Department)
+                .WithMany(d => d.Students)
+                .HasForeignKey(s => s.Dep_Id);
+
+            modelBuilder.Entity<Instructor>()
+                .HasOne(i => i.Department)
+                .WithMany(d => d.Instructors)
+                .HasForeignKey(i => i.Dept_ID);
         }
     }
 
