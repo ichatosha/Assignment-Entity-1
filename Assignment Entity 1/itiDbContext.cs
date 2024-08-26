@@ -67,6 +67,8 @@ namespace Assignment_Entity_1
                 .WithMany(c => c.Course)
                 .HasForeignKey(ci => ci.Course_ID);
             
+
+            
         }
     }
 
